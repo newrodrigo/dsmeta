@@ -1,0 +1,5 @@
+version = 1
+
+[env.production]
+monorepo = true
+packages = ["backend", "frontend"]
