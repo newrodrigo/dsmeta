@@ -10,15 +10,15 @@ import { Sale } from "../../models/sale";
 function SalesCard() {
 
     const min = new Date();
-    min.setDate(1); // Define o dia como o primeiro dia do mês atual
-    
+    min.setDate(1);
+
     const max = new Date();
-    max.setMonth(max.getMonth() + 1); // Define o mês como o próximo mês
-    max.setDate(0); // Define o dia como o último dia do mês atual
-    
+    max.setMonth(max.getMonth() + 1);
+    max.setDate(0);
+
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
-    
+
     const [sales, setSales] = useState<Sale[]>([]);
 
     useEffect(() => {
@@ -80,7 +80,7 @@ function SalesCard() {
                                     <td>R$ {sale.amount.toFixed(2)}</td>
                                     <td>
                                         <div className="dsmeta-red-btn-container">
-                                            <NotificationButton />
+                                            <NotificationButton saleId={sale.id} />
                                         </div>
                                     </td>
                                 </tr>
