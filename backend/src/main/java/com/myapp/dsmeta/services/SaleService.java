@@ -1,8 +1,6 @@
 package com.myapp.dsmeta.services;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,11 +21,19 @@ public class SaleService {
 	@Transactional(readOnly = true)
 	public Page<SaleDTO> findSales(String minDate, String maxDate,Pageable pageable) {
 		
-		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-		
-		LocalDate min = minDate.equals("") ? today.minusMonths(1) : LocalDate.parse(minDate);
-		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
-		
+		if (minDate == null || minDate.isEmpty()) {
+			LocalDate firstDayOfMonth = LocalDate.now().withDayOfMonth(1);
+			minDate = firstDayOfMonth.toString();
+		}
+
+		if (maxDate == null || maxDate.isEmpty()) {
+			LocalDate lastDayOfMonth = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+			maxDate = lastDayOfMonth.toString();
+		}
+
+		LocalDate min = LocalDate.parse(minDate);
+		LocalDate max = LocalDate.parse(maxDate);
+
 		Page<Sale> result = saleRepository.findSales(min, max, pageable);
 		return result.map(x -> new SaleDTO(x));
 	}
