@@ -72,7 +72,7 @@ cd backend
 ```
 
 ### Front End
-Pré-requisitos: Java 17
+Pré-requisitos: npm / yarn
 
 ```bash
 # Clonar o repositório
