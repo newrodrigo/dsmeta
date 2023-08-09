@@ -49,9 +49,11 @@ O DSMeta é uma aplicação construída durante o Intensivão Java Spring, um ev
 - Maven
 - H2 Database
 
-### Front-End
+### Front End
 - HTML / CSS / JS / TypeScript
 - ReactJS
+- Toast
+- Axios
 
 ## Como Executar o Projeto
 
@@ -60,13 +62,30 @@ Pré-requisitos: Java 17
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/newrodrigo/dsmeta
+git clone git@github.com:newrodrigo/dsmeta.git
 
 # Entrar na pasta do projeto back-end
-cd dslist
+cd backend
 
 # Executar o projeto
 ./mvnw spring-boot:run
+```
+
+### Front End
+Pré-requisitos: Java 17
+
+```bash
+# Clonar o repositório
+git clone git@github.com:newrodrigo/dsmeta.git
+
+# Entrar na pasta do projeto back-end
+cd frontend
+
+# instalar dependências
+yarn install
+
+# executar o projeto
+yarn dev
 ```
 
 # Autor
